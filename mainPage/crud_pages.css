@@ -143,7 +143,8 @@ input:focus + .slider {
 }
 
 .main-content {
-    display: flex;
+    /* display: flex; */
+    width: 95%;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
@@ -272,8 +273,8 @@ input:focus + .slider {
 
 .info-list table {
     width: 100%;
-    border-collapse: collapse;
-    max-height: 50px; /* Tentukan ketinggian maksimum tabel */
+    /* border-collapse: none; */
+    height: auto; /* Tentukan ketinggian maksimum tabel */
     overflow-y: auto; /* Tampilkan scrollbar hanya jika melebihi ketinggian maksimum */
 }
 .info-list tbody tr:nth-child(odd) {
@@ -286,6 +287,6 @@ input:focus + .slider {
 .info-list th, .info-list td {
     padding: 8px;
     text-align: left;
-    max-width: fit-content;
+    max-width: 25%;
     border-bottom: 1px solid #ddddddd4;
 }

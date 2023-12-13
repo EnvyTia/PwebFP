@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query = "UPDATE list_tugas SET tugas='$tugas', deadline_tugas='$deadline_tugas', id_anggota='$id_anggota' WHERE id_tugas='$id_tugas'";
 
     if (mysqli_query($connection, $query)) {
-        header("Location: home.php");
+        header("Location: info_task.php");
         exit;
     } else {
         echo "Error: " . $query . "<br>" . mysqli_error($connection);

@@ -33,7 +33,7 @@ body, h1, h2, h3, p, ul, li, button, input {
     text-decoration: none;
     color:#4f826f;
     font-size: 1.5em;
-    margin-left: 10%;
+    margin-left: 20%;
 }
 
 .navbar-toggler {
@@ -46,6 +46,7 @@ body, h1, h2, h3, p, ul, li, button, input {
 }
 
 .menu {
+    margin-right: 3%;
     display: flex;
     justify-content: flex-end;
 }
@@ -227,33 +228,6 @@ input:focus + .slider {
 .add-task .form-row input:last-child,
 .add-task .form-row button {
     margin-right: 0;
-}
-.card {
-    width: 30%;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    background-color: #eeeeeed0;
-    position: absolute;
-    left: 60%;
-    top: 15%;
-}
-.head-card{
-    padding: 20px;
-    padding-bottom: 10px;
-}
-.head-card img {
-    width: 100%;
-    object-fit: cover;
-    height: 200px;
-}
-.body-card{
-    padding: 10px 15px;
-    text-align: center;
-    font-size: 15px;
-    padding-top: 10px;
 }
 
 .info-list {

@@ -3,7 +3,7 @@ session_start();
 
 // Jika pengguna sudah login, arahkan ke halaman home
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    header("Location: home.php");
+    header("Location: login.php");
     exit;
 }
 

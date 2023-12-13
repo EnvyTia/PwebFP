@@ -3,22 +3,23 @@
 <head>
     <title>RumaKita</title>
     <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="dashboardstyle.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
         /* Tambahkan styling card di dalam tag <style> */
         .card {
             display: none;
             width: 300px;
+            height: 450px;
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 10px;
-            margin: 10px;
+            margin: 5%;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         }
 
         .card img {
-            width: 100%;
-            height: auto;
+            width: 300px;
+            height: 300px;
             border-radius: 5px;
             margin-bottom: 10px;
         }
@@ -53,7 +54,6 @@
     </div>
 </nav>
 
-
 <div class="main-content">
     <div class="info-cards">
         <?php
@@ -68,7 +68,6 @@
             echo "<div class='card'>";
             echo "<img src='uploads/" . $row['foto'] . "' alt='" . $row['nama'] . "'>";
             echo "<h3>" . $row['nama'] . "</h3>";
-            // echo "<p>ID Info: " . $row['id_info'] . "</p>";
             echo "<p>" . $row['isi'] . "</p>";
             echo "</div>";
         }
@@ -76,20 +75,22 @@
     </div>
 </div>
 
-
 <script>
+    // Menggunakan JavaScript untuk mengatur transisi antar card setiap 10 detik
+    const cards = document.querySelectorAll('.card');
+    let index = 0;
+
     function showNextCard() {
-    cards.forEach(card => card.classList.remove('active')); // Menghapus class 'active' dari semua card
-    cards[index].classList.add('active'); // Menambah class 'active' pada card yang sesuai dengan index saat ini
-    index = (index + 1) % cards.length; // Perbarui index untuk card selanjutnya
+        cards.forEach(card => card.style.display = 'none'); // Sembunyikan semua card
+        cards[index].style.display = 'block'; // Tampilkan card yang sesuai dengan index saat ini
+        index = (index + 1) % cards.length; // Perbarui index untuk card selanjutnya
     }
 
-// Tampilkan card pertama saat halaman dimuat
+    // Tampilkan card pertama saat halaman dimuat
     showNextCard();
 
-// Set interval untuk menampilkan card berikutnya setiap 10 detik
+    // Set interval untuk menampilkan card berikutnya setiap 10 detik
     setInterval(showNextCard, 10000);
-
 </script>
 
 </body>
