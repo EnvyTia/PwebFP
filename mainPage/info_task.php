@@ -31,10 +31,11 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         <div class="menu">
             <ul class="nav">
                 <!-- <li><a href="#" class="active">Home</a></li> -->
+                
                 <li class="dropdown">
                     <a href="home.php">Home</a>
-                    
                 </li>
+                
             </ul>
         </div>
     </div>
@@ -42,14 +43,14 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 
 
 <div class="main-content">
-    <div class="info-list">
+    <div class="task-list">
         <table>
             <thead>
                 <tr>
-                    <th>ID Info</th>
-                    <th>Nama</th>
-                    <th>Gambar</th>
-                    <th>Keterangan</th>
+                    <th>ID Tugas</th>
+                    <th>Tugas</th>
+                    <th>Deadline</th>
+                    <th>ID Anggota</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -58,17 +59,17 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                 include 'config.php';
                 
                 // Ambil data dari tabel list tugas
-                $query = "SELECT * FROM list_info";
+                $query = "SELECT * FROM list_tugas";
                 $result = mysqli_query($connection, $query);
 
                 // Di dalam loop untuk menampilkan list tugas
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
-                    echo "<td>".$row['id_info']."</td>";
-                    echo "<td>".$row['nama']."</td>";
-                    echo "<td><img src='uploads/".$row['foto']."' width='100'></td>"; 
-                    echo "<td>".$row['isi']."</td>";
-                    echo "<td><a href='edit_info.php?id=".$row['id_info']."'>Edit</a> | <a href='delete_info.php?id=".$row['id_info']."'>Hapus</a></td>";
+                    echo "<td>".$row['id_tugas']."</td>";
+                    echo "<td>".$row['tugas']."</td>";
+                    echo "<td>".$row['deadline_tugas']."</td>";
+                    echo "<td>".$row['id_anggota']."</td>";
+                    echo "<td><a href='edit_task.php?id=".$row['id_tugas']."'>Edit</a> | <a href='delete_task.php?id=".$row['id_tugas']."'>Hapus</a></td>";
                     echo "</tr>";
                 }
                 ?>
@@ -79,15 +80,14 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 
 
 <div class="add-task">
-        <form action="add_info.php" method="post" enctype="multipart/form-data">
-            <h3>Tambah Info Baru</h3>
+        <form action="add_task.php" method="post">
+            <h3>Tambah Tugas Baru</h3>
             <div class="form-row">
-                <input type="number" name="id_info" placeholder="ID info" required>
-                <input type="text" name="nama" placeholder="nama" required>
-                <input type="file" name="foto" placeholder="gambar" required >
-                
-                <input type="text" name="isi" placeholder="isi" required>
-                <button type="submit">Tambah Info</button>
+                <input type="number" name="id_tugas" placeholder="ID Tugas" required>
+                <input type="text" name="tugas" placeholder="Tugas" required>
+                <input type="date" name="deadline_tugas" required>
+                <input type="number" name="id_anggota" placeholder="ID Anggota" required>
+                <button type="submit">Tambah Tugas</button>
             </div>
         </form>
     </div>

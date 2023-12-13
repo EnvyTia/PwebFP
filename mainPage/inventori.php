@@ -14,7 +14,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <title>RumaKita</title>
     <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="crud_pages.css">
 </head>
 <body>
 <nav class="navbar bg-body-tertiary">

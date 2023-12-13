@@ -1,42 +1,30 @@
-<?php
-session_start();
-
-// Pastikan user sudah login sebelum mengakses halaman ini
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header("Location: index.php");
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>RumaKita</title>
     <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="dashboardstyle.css">
+    <style>
+        /* Tambahkan styling card di dalam tag <style> */
+        .card {
+            display: none;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
 
-    <link rel="stylesheet" type="text/css" href="styles.css">
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-<!-- <div class="navbar">
-    <div class="logo">
-        RumaKita
-    </div>
-    <div class="menu-container">
-        <div class="dropdown">
-            <button class="dropbtn">Menu</button>
-            <div class="dropdown-content">
-                <a href="#">Makan apa malam ini</a>
-                <a href="#">List lokasi barang</a>
-                <a href="#">Anggota keluarga</a>
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                    At Home
-                </label>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 <nav class="navbar bg-body-tertiary">
     <div class="container">
@@ -52,11 +40,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <ul class="nav">
                 <!-- <li><a href="#" class="active">Home</a></li> -->
                 <li class="dropdown">
-                    <a href="#" class="dropbtn">Lainnya</a>
+                    <a href="#" class="dropbtn">Editing</a>
                     <div class="dropdown-content">
                         <a href="info.php">Info</a><br>
                         <a href="member.php">Member</a><br>
                         <a href="inventori.php">Inventori</a><br>
+                        <a href="info_task.php">Housework</a><br>
                     </div>
                 </li>
             </ul>
@@ -66,70 +55,42 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 
 
 <div class="main-content">
-    <div class="task-list">
-        <table>
-            <thead>
-                <tr>
-                    <th>ID Tugas</th>
-                    <th>Tugas</th>
-                    <th>Deadline</th>
-                    <th>ID Anggota</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                include 'config.php';
-                
-                // Ambil data dari tabel list tugas
-                $query = "SELECT * FROM list_tugas";
-                $result = mysqli_query($connection, $query);
+    <div class="info-cards">
+        <?php
+        include 'config.php';
 
-                // Di dalam loop untuk menampilkan list tugas
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<td>".$row['id_tugas']."</td>";
-                    echo "<td>".$row['tugas']."</td>";
-                    echo "<td>".$row['deadline_tugas']."</td>";
-                    echo "<td>".$row['id_anggota']."</td>";
-                    echo "<td><a href='edit_task.php?id=".$row['id_tugas']."'>Edit</a> | <a href='delete_task.php?id=".$row['id_tugas']."'>Hapus</a></td>";
-                    echo "</tr>";
-                }
-                ?>
-            </tbody>
-        </table>
+        // Ambil data dari tabel list_info
+        $query = "SELECT * FROM list_info";
+        $result = mysqli_query($connection, $query);
+
+        // Di dalam loop untuk menampilkan list info dalam bentuk card
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<div class='card'>";
+            echo "<img src='uploads/" . $row['foto'] . "' alt='" . $row['nama'] . "'>";
+            echo "<h3>" . $row['nama'] . "</h3>";
+            // echo "<p>ID Info: " . $row['id_info'] . "</p>";
+            echo "<p>" . $row['isi'] . "</p>";
+            echo "</div>";
+        }
+        ?>
     </div>
 </div>
 
 
-<div class="add-task">
-        <form action="add_task.php" method="post">
-            <h3>Tambah Tugas Baru</h3>
-            <div class="form-row">
-                <input type="number" name="id_tugas" placeholder="ID Tugas" required>
-                <input type="text" name="tugas" placeholder="Tugas" required>
-                <input type="date" name="deadline_tugas" required>
-                <input type="number" name="id_anggota" placeholder="ID Anggota" required>
-                <button type="submit">Tambah Tugas</button>
-            </div>
-        </form>
-    </div>
-</div>
+<script>
+    function showNextCard() {
+    cards.forEach(card => card.classList.remove('active')); // Menghapus class 'active' dari semua card
+    cards[index].classList.add('active'); // Menambah class 'active' pada card yang sesuai dengan index saat ini
+    index = (index + 1) % cards.length; // Perbarui index untuk card selanjutnya
+    }
 
-<div class="card">
-    <div class="head-card">
-        <img src="gajian.jpg" alt="gajian">
-    </div>
-    <div class="body-card">
-        <h1>Bapak abis gajian</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, facilis!
-        </p>
-        <div class="info">
-            <h3>info</h3>
-        </div>
-    </div>
-</div>
+// Tampilkan card pertama saat halaman dimuat
+    showNextCard();
 
+// Set interval untuk menampilkan card berikutnya setiap 10 detik
+    setInterval(showNextCard, 10000);
+
+</script>
 
 </body>
 </html>

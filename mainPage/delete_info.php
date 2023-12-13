@@ -2,12 +2,12 @@
 include 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
-    $id_tugas = $_GET['id'];
+    $id_info = $_GET['id'];
 
-    $query = "DELETE FROM list_tugas WHERE id_tugas='$id_tugas'";
+    $query = "DELETE FROM list_info WHERE id_info='$id_info'";
 
     if (mysqli_query($connection, $query)) {
-        header("Location: info_task.php");
+        header("Location: info.php");
         exit;
     } else {
         echo "Error: " . $query . "<br>" . mysqli_error($connection);

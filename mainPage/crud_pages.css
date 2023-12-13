@@ -1,11 +1,11 @@
 
 body {
     font-family: 'Averia Serif Libre', sans-serif;
-    /* background-image: url(rumah.jpg);
-     */
-     background-color: #f2f2f2;
+    /* background-image: url(rumah.jpg); */
+    background-color: #f2f2f2;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 
 /* Reset CSS */
@@ -16,7 +16,7 @@ body, h1, h2, h3, p, ul, li, button, input {
 }
 
 .navbar {
-    background-color: #eeeeee;
+    background-color: #4f826f;
     padding: 10px 0;
     width: 100%;
     margin-bottom: 10px;
@@ -64,9 +64,9 @@ body, h1, h2, h3, p, ul, li, button, input {
 
 .nav li a {
     text-decoration: none;
-    color: #333;
+    color: #f2f2f2;
     padding: 10px 15px;
-    transition: background-color 0.3s ease;
+    transition: #040404 0.3s ease;
 }
 
 .nav li a:hover {
@@ -99,7 +99,7 @@ body, h1, h2, h3, p, ul, li, button, input {
 .logo a {
     font-weight: bold;
     text-decoration: none;
-    color: #4f826f;
+    color: #f2f2f2;
     font-size: 1.5em;
 }
 
@@ -110,16 +110,17 @@ body, h1, h2, h3, p, ul, li, button, input {
 }
 
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    position: relative; /* Mengubah posisi menjadi relatif */
+    display: inline-block;
+    width: 60px;
+    height: 10px;
+    margin-top: 5px; /* Menyesuaikan jarak dari atas */
+    margin-bottom: 5px; /* Menyesuaikan jarak dari bawah */
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
-}
+  }
+  
 
 .slider:before {
     position: absolute;
@@ -150,10 +151,12 @@ input:focus + .slider {
 
 /* Tabel style */
 .task-list {
-    width: 50%; /* Menyesuaikan lebar container */
-    max-width: 600px; /* Ukuran maksimum container */
-    max-height: 200px;
-    margin-left: 2%;
+    width: 95%; /* Menyesuaikan lebar container */
+    /* width: 1920px; Ukuran maksimum container */
+    max-height: 900px;
+    margin-left: 5%;
+    margin-right: 5%;
+    justify-content: center;
     margin-bottom: 20px; /* Jarak antara task list dan add task */
     overflow-y: auto; /* Untuk membuat vertikal slider jika konten melebihi area */
 }
@@ -186,8 +189,10 @@ input:focus + .slider {
     background-color: #f9f9f9d2;
     padding: 20px;
     border-radius: 5px;
-    margin-left: 2%;
-    width: 45%; /* Menyesuaikan lebar container */
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    width: 55%; /* Menyesuaikan lebar container */
     max-width: 600px; /* Ukuran maksimum container */
 }
 
@@ -281,9 +286,6 @@ input:focus + .slider {
 .info-list th, .info-list td {
     padding: 8px;
     text-align: left;
+    max-width: fit-content;
     border-bottom: 1px solid #ddddddd4;
-}
-
-.info-list th {
-    background-color: #f3f3f3d3;
 }

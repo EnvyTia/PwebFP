@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (mysqli_query($connection, $query)) {
         // Jika query berhasil dieksekusi, arahkan kembali ke halaman home
-        header("Location: home.php");
+        header("Location: info_task.php");
         exit;
     } else {
         // Jika terjadi kesalahan saat eksekusi query

@@ -9,8 +9,6 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
 
 // Cek jika ada data login yang dikirimkan
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Anda perlu menyimpan informasi login yang valid dalam database,
-    // lakukan validasi login di sini dan sesuaikan dengan struktur tabel anggota keluarga
     $username = $_POST['username']; // Ganti dengan nama field email pada tabel anggota keluarga
     $password = $_POST['password']; // Ganti dengan nama field password pada tabel anggota keluarga
 

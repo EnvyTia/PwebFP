@@ -1,9 +1,7 @@
 
 body {
     font-family: 'Averia Serif Libre', sans-serif;
-    /* background-image: url(rumah.jpg);
-     */
-     background-color: #f2f2f2;
+    /* background-image: url(rumah.jpg); */
     background-size: cover;
     background-position: center;
 }
@@ -228,33 +226,31 @@ input:focus + .slider {
 .add-task .form-row button {
     margin-right: 0;
 }
+/* Tambahkan transisi untuk efek fade out */
 .card {
-    width: 30%;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    background-color: #eeeeeed0;
-    position: absolute;
-    left: 60%;
-    top: 15%;
+    display: none;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Transisi pada opacity */
 }
-.head-card{
-    padding: 20px;
-    padding-bottom: 10px;
-}
-.head-card img {
+
+.card img {
     width: 100%;
-    object-fit: cover;
-    height: 200px;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
-.body-card{
-    padding: 10px 15px;
-    text-align: center;
-    font-size: 15px;
-    padding-top: 10px;
+
+.card.active {
+    display: block;
+    opacity: 1; /* Tampilkan card dengan opacity penuh */
 }
+
 
 .info-list {
     width: 100%; /* Menyesuaikan lebar container */
@@ -282,8 +278,4 @@ input:focus + .slider {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddddddd4;
-}
-
-.info-list th {
-    background-color: #f3f3f3d3;
 }
