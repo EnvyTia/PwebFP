@@ -11,7 +11,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RumaKita</title>
+    <title>HomePortal</title>
     <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="crud_pages.css">
@@ -20,7 +20,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 <nav class="navbar bg-body-tertiary">
     <div class="container">
         <div class="logo">
-            <a href="#">RumaKita</a>
+            <a href="#">HomePortal</a>
         </div>
         <button class="navbar-toggler" onclick="toggleMenu()">
             <span></span>

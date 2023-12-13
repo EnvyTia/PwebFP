@@ -1,9 +1,9 @@
 
 body {
     font-family: 'Averia Serif Libre', sans-serif;
-    /* background-image: url(rumah.jpg);
-     */
-     background-color: #f2f2f2;
+    background-image: url('wp.jpg');
+     
+     /* background-color: #4f826f; */
     background-size: cover;
     background-position: center;
 }
@@ -147,15 +147,17 @@ input:focus + .slider {
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Tabel style */
 .task-list {
-    width: 50%; /* Menyesuaikan lebar container */
-    max-width: 600px; /* Ukuran maksimum container */
+    width: 70%; /* Menyesuaikan lebar container */
+    max-width: 1200px; /* Ukuran maksimum container */
     max-height: 200px;
     margin-left: 2%;
-    margin-bottom: 20px; /* Jarak antara task list dan add task */
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    /* margin-bottom: 20px; Jarak antara task list dan add task */
     overflow-y: auto; /* Untuk membuat vertikal slider jika konten melebihi area */
 }
 
@@ -260,4 +262,49 @@ input:focus + .slider {
 
 .info-list th {
     background-color: #f3f3f3d3;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 5% auto;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.card {
+    display: none;
+    width: 300px;
+    height: 450px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 5%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #f2f2f2;
+}
+
+.card img {
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#weather-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #f2f2f2ae;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }

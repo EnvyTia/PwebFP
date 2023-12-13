@@ -1,36 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RumaKita</title>
+    <title>HomePortal</title>
     <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <style>
-        /* Tambahkan styling card di dalam tag <style> */
-        .card {
-            display: none;
-            width: 300px;
-            height: 450px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-            margin: 5%;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .card img {
-            width: 300px;
-            height: 300px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
 </head>
 <body>
 
 <nav class="navbar bg-body-tertiary">
     <div class="container">
         <div class="logo">
-            <a href="#">RumaKita</a>
+            <a href="#">HomePortal</a>
         </div>
         <button class="navbar-toggler" onclick="toggleMenu()">
             <span></span>
@@ -73,7 +55,63 @@
         }
         ?>
     </div>
+
+    <div class="task-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Pekerjaan Rumah</th>
+                    <th>Deadline</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                include 'config.php';
+                
+                // Ambil data dari tabel list tugas
+                $query = "SELECT * FROM list_tugas";
+                $result = mysqli_query($connection, $query);
+
+                // Di dalam loop untuk menampilkan list tugas
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td>".$row['tugas']."</td>";
+                    echo "<td>".$row['deadline_tugas']."</td>";
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div id="weather-widget">
+    <h2>Cuaca Hari Ini</h2>
+    <p>Lokasi: Surabaya Timur</p>
+    <p>Cuaca: <span id="weather"></span></p>
+    <p>Suhu: <span id="temperature"></span> &deg;C</p>
 </div>
+</div>
+
+<script>
+    // Fungsi untuk mendapatkan data cuaca dari API
+    function getWeatherData() {
+        const apiKey = 'YOUR_API_KEY'; // Ganti dengan kunci API Anda dari layanan cuaca
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Jakarta&units=metric&appid=${apiKey}`;
+
+        $.getJSON(apiUrl, function(data) {
+            $('#location').text(data.name);
+            $('#weather').text(data.weather[0].description);
+            $('#temperature').text(data.main.temp);
+        });
+    }
+
+    // Panggil fungsi saat halaman dimuat
+    $(document).ready(function() {
+        getWeatherData();
+    });
+</script>
+
 
 <script>
     // Menggunakan JavaScript untuk mengatur transisi antar card setiap 10 detik
@@ -89,8 +127,8 @@
     // Tampilkan card pertama saat halaman dimuat
     showNextCard();
 
-    // Set interval untuk menampilkan card berikutnya setiap 10 detik
-    setInterval(showNextCard, 10000);
+    // Set interval untuk menampilkan card berikutnya setiap 6 detik
+    setInterval(showNextCard, 6000);
 </script>
 
 </body>

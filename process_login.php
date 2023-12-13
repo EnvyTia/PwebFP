@@ -15,9 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = mysqli_fetch_assoc($result);
         // Verifikasi password
         if (password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
+            // $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_email'] = $user['email'];
-            $_SESSION['user_name'] = $user['nama'];
+            // $_SESSION['user_name'] = $user['nama'];
             header("Location: home.php");
             exit;
         } else {
